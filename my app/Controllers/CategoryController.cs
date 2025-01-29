@@ -13,8 +13,6 @@ namespace my_app.Controllers
 
         }
 
-
-
         public IActionResult Index()
         {
 
@@ -38,8 +36,7 @@ namespace my_app.Controllers
 
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
-
-
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -69,9 +66,8 @@ namespace my_app.Controllers
 
                 _db.Categories.Update(obj);
                 _db.SaveChanges();
-
-
-                return RedirectToAction("Index");
+                TempData["success"] = "Category Updated successfully";
+               return RedirectToAction("Index");
             }
             return View();
 
@@ -104,7 +100,9 @@ namespace my_app.Controllers
             }
             _db.Categories.Remove(obj);          
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+            TempData["success"] = "Category Deleted successfully";
+
+            return RedirectToAction("Index");
             }
            
 
